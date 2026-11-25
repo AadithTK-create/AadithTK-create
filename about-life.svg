@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340">
+  <defs>
+    <linearGradient id="a-grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+    <linearGradient id="a-border" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8" stop-opacity=".7"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".2"/></linearGradient>
+    <pattern id="a-dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#fff" opacity=".06"/></pattern>
+    <clipPath id="a-c1"><rect x="10" y="10" width="430" height="320" rx="20"/></clipPath>
+    <clipPath id="a-c2"><rect x="460" y="10" width="430" height="320" rx="20"/></clipPath>
+    <style>
+      text{font-family:'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;fill:#cbd5e1}
+      .h{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;fill:#f1f5f9}
+      .blink{animation:blink 1s steps(2) infinite}
+      @keyframes blink{50%{opacity:0}}
+      .row{animation:in .8s ease-out both}
+      @keyframes in{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+      .ring{stroke-dasharray:100;animation:ring 5s ease-in-out infinite}
+      @keyframes ring{0%{stroke-dashoffset:100}60%,90%{stroke-dashoffset:var(--o)}100%{stroke-dashoffset:100}}
+      .seg{transform-box:fill-box;transform-origin:left;animation:seg 12s linear infinite}
+      @keyframes seg{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+      .slide{opacity:0;animation:slide 12s infinite}
+      @keyframes slide{0%{opacity:0;transform:translateX(30px)}4%,29%{opacity:1;transform:none}33%,100%{opacity:0;transform:translateX(-30px)}}
+      .bob{animation:bob 3s ease-in-out infinite}
+      @keyframes bob{50%{transform:translateY(-6px)}}
+    </style>
+  </defs>
+  <!-- LEFT CARD -->
+  <rect x="10" y="10" width="430" height="320" rx="20" fill="#0a0d18"/>
+  <rect x="10" y="10" width="430" height="320" rx="20" fill="url(#a-dots)"/>
+  <rect x="10.75" y="10.75" width="428.5" height="318.5" rx="19.5" fill="none" stroke="url(#a-border)"/>
+  <text class="h" x="32" y="42" font-size="18" style="fill:#f1f5f9">What I build</text>
+  <!-- fake browser -->
+  <rect x="32" y="58" width="386" height="130" rx="10" fill="#0f172a" stroke="#1e293b"/>
+  <circle cx="48" cy="74" r="4" fill="#f87171"/><circle cx="62" cy="74" r="4" fill="#fbbf24"/><circle cx="76" cy="74" r="4" fill="#4ade80"/>
+  <rect x="96" y="66" width="300" height="16" rx="8" fill="#1e293b"/>
+  <text x="108" y="78" font-size="10">https://github.com/AadithTK-create</text>
+  <rect x="172" y="70" width="1.5" height="8" fill="#38bdf8" class="blink"/>
+  <g class="bob">
+    <rect x="60" y="100" width="90" height="70" rx="8" fill="#1e293b"/>
+    <polygon points="108,106 94,134 106,134 98,164 128,124 114,124 122,106" fill="#fde68a"/>
+    <rect x="165" y="104" width="130" height="10" rx="5" fill="url(#a-grad)"/>
+    <rect x="165" y="124" width="200" height="7" rx="3.5" fill="#334155"/>
+    <rect x="165" y="140" width="170" height="7" rx="3.5" fill="#334155"/>
+    <rect x="165" y="156" width="90" height="14" rx="7" fill="#38bdf8" opacity=".8"/>
+  </g>
+  <g>
+    <g class="row" style="animation-delay:.3s"><rect x="32" y="204" width="34" height="34" rx="9" fill="#38bdf8" opacity=".15"/><text x="43" y="227" font-size="16">⚡</text><text x="76" y="219" font-size="13" style="fill:#f1f5f9">AI &amp; ML projects</text><text x="76" y="233" font-size="10">Python, data, models</text></g>
+    <g class="row" style="animation-delay:.6s"><rect x="32" y="248" width="34" height="34" rx="9" fill="#a78bfa" opacity=".15"/><text x="43" y="271" font-size="16">🛡</text><text x="76" y="263" font-size="13" style="fill:#f1f5f9">Security fundamentals</text><text x="76" y="277" font-size="10">Networks, labs, CTFs</text></g>
+    <g class="row" style="animation-delay:.9s"><rect x="32" y="292" width="34" height="34" rx="9" fill="#fbbf24" opacity=".15"/><text x="43" y="315" font-size="16">🌩</text><text x="76" y="307" font-size="13" style="fill:#f1f5f9">Automation scripts</text><text x="76" y="321" font-size="10">Python for repetitive tasks</text></g>
+  </g>
+
+  <!-- RIGHT CARD -->
+  <rect x="460" y="10" width="430" height="320" rx="20" fill="#0a0d18"/>
+  <rect x="460" y="10" width="430" height="320" rx="20" fill="url(#a-dots)"/>
+  <rect x="460.75" y="10.75" width="428.5" height="318.5" rx="19.5" fill="none" stroke="url(#a-border)"/>
+  <text class="h" x="482" y="42" font-size="18" style="fill:#f1f5f9">Off the clock</text>
+  <!-- progress segments -->
+  <g>
+    <rect x="482" y="54" width="122" height="4" rx="2" fill="#1e293b"/><rect x="482" y="54" width="122" height="4" rx="2" fill="#38bdf8"><animate attributeName="width" values="0;122;122;122" keyTimes="0;.33;.34;1" dur="12s" repeatCount="indefinite"/></rect>
+    <rect x="612" y="54" width="122" height="4" rx="2" fill="#1e293b"/><rect x="612" y="54" width="0" height="4" rx="2" fill="#a78bfa"><animate attributeName="width" values="0;0;122;122" keyTimes="0;.33;.66;1" dur="12s" repeatCount="indefinite"/></rect>
+    <rect x="742" y="54" width="122" height="4" rx="2" fill="#1e293b"/><rect x="742" y="54" width="0" height="4" rx="2" fill="#fbbf24"><animate attributeName="width" values="0;0;0;122" keyTimes="0;.66;.67;1" dur="12s" repeatCount="indefinite"/></rect>
+  </g>
+  <rect x="482" y="72" width="386" height="150" rx="12" fill="#0f172a" stroke="#1e293b"/>
+  <g class="slide" style="animation-delay:0s"><text x="675" y="136" font-size="44" text-anchor="middle">🎮</text><text x="675" y="196" font-size="13" text-anchor="middle">Gaming &amp; strategy nights</text></g>
+  <g class="slide" style="animation-delay:4s"><text x="675" y="136" font-size="44" text-anchor="middle">🎵</text><text x="675" y="196" font-size="13" text-anchor="middle">Music on loop while coding</text></g>
+  <g class="slide" style="animation-delay:8s"><text x="675" y="136" font-size="44" text-anchor="middle">🌴</text><text x="675" y="196" font-size="13" text-anchor="middle">Capture-the-flag puzzles &amp; labs</text></g>
+  <!-- daily rings -->
+  <g transform="translate(560,282)"><circle r="24" fill="none" stroke="#1e293b" stroke-width="6"/><circle r="24" fill="none" stroke="#38bdf8" stroke-width="6" stroke-linecap="round" pathLength="100" class="ring" style="--o:20" transform="rotate(-90)"/><text y="4" font-size="9" text-anchor="middle">CODE</text></g>
+  <g transform="translate(675,282)"><circle r="24" fill="none" stroke="#1e293b" stroke-width="6"/><circle r="24" fill="none" stroke="#a78bfa" stroke-width="6" stroke-linecap="round" pathLength="100" class="ring" style="--o:35" transform="rotate(-90)"/><text y="4" font-size="9" text-anchor="middle">LEARN</text></g>
+  <g transform="translate(790,282)"><circle r="24" fill="none" stroke="#1e293b" stroke-width="6"/><circle r="24" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" pathLength="100" class="ring" style="--o:50" transform="rotate(-90)"/><text y="4" font-size="9" text-anchor="middle">MOVE</text></g>
+</svg>
