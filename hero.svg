@@ -1,105 +1,402 @@
+
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340">
   <defs>
+    <!-- Main gradients -->
     <linearGradient id="h-grad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#38bdf8"/><stop offset="0.5" stop-color="#a78bfa"/><stop offset="1" stop-color="#fbbf24"/>
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.5" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#fbbf24"/>
     </linearGradient>
+
+    <linearGradient id="pirate-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#facc15"/>
+      <stop offset="1" stop-color="#d97706"/>
+    </linearGradient>
+
     <linearGradient id="h-border" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#38bdf8" stop-opacity=".8"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".2"/>
+      <stop offset="0" stop-color="#38bdf8" stop-opacity=".9"/>
+      <stop offset=".5" stop-color="#fbbf24" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity=".2"/>
     </linearGradient>
+
     <radialGradient id="h-glow" cx=".5" cy=".5" r=".5">
-      <stop offset="0" stop-color="#38bdf8" stop-opacity=".45"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="0" stop-color="#38bdf8" stop-opacity=".35"/>
+      <stop offset=".5" stop-color="#fbbf24" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
     </radialGradient>
-    <pattern id="h-dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#ffffff" opacity=".06"/></pattern>
-    <clipPath id="h-clip"><rect x="0" y="0" width="900" height="340" rx="22"/></clipPath>
+
+    <radialGradient id="ocean-glow">
+      <stop offset="0" stop-color="#164e63" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#0a0d18" stop-opacity="0"/>
+    </radialGradient>
+
+    <pattern id="h-dots" width="14" height="14" patternUnits="userSpace">
+      <circle cx="1" cy="1" r=".8" fill="#ffffff" opacity=".06"/>
+    </pattern>
+
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpace">
+      <rect width="4" height="1" fill="#38bdf8" opacity=".035"/>
+    </pattern>
+
+    <clipPath id="h-clip">
+      <rect x="0" y="0" width="900" height="340" rx="22"/>
+    </clipPath>
+
     <style>
-      text{font-family:'SF Mono','JetBrains Mono',Menlo,Consolas,monospace}
-      .disp{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;font-weight:800}
-      .fade{animation:fadeUp .9s ease-out both}
-      @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-      .pulse{animation:pulse 1.6s ease-in-out infinite}
-      @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(1.6)}}
-      .brk{stroke-dasharray:60;animation:draw 1.2s ease-out both}
-      @keyframes draw{from{stroke-dashoffset:60}to{stroke-dashoffset:0}}
-      .roles text{opacity:0}
-      .r1{animation:role 9s infinite 0s}.r2{animation:role 9s infinite 3s}.r3{animation:role 9s infinite 6s}
-      @keyframes role{0%{opacity:0;transform:translateY(10px)}6%,30%{opacity:1;transform:none}36%,100%{opacity:0;transform:translateY(-10px)}}
-      .bolt{animation:flash 5s infinite}
-      @keyframes flash{0%,88%,100%{opacity:0}90%{opacity:1}92%{opacity:.1}94%{opacity:.9}97%{opacity:0}}
-      .rain{animation:rain 1.1s linear infinite}
-      @keyframes rain{from{transform:translate(0,-40px)}to{transform:translate(-18px,380px)}}
-      .hammer{transform-origin:690px 170px;animation:spin 6s linear infinite}
-      @keyframes spin{to{transform:rotate(360deg)}}
-      .float{animation:float 4s ease-in-out infinite}
-      @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+      text {
+        font-family: 'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;
+      }
+
+      .disp {
+        font-family: 'Segoe UI','Helvetica Neue',Arial,sans-serif;
+        font-weight: 800;
+      }
+
+      .fade {
+        animation: fadeUp .9s ease-out both;
+      }
+
+      @keyframes fadeUp {
+        from { opacity:0; transform:translateY(14px); }
+        to { opacity:1; transform:none; }
+      }
+
+      .pulse {
+        animation: pulse 1.6s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,100% { opacity:1; transform:scale(1); }
+        50% { opacity:.35; transform:scale(1.6); }
+      }
+
+      .brk {
+        stroke-dasharray:60;
+        animation: draw 1.2s ease-out both;
+      }
+
+      @keyframes draw {
+        from { stroke-dashoffset:60; }
+        to { stroke-dashoffset:0; }
+      }
+
+      .roles text { opacity:0; }
+
+      .r1 { animation: role 12s infinite 0s; }
+      .r2 { animation: role 12s infinite 4s; }
+      .r3 { animation: role 12s infinite 8s; }
+
+      @keyframes role {
+        0% { opacity:0; transform:translateY(10px); }
+        6%,30% { opacity:1; transform:none; }
+        36%,100% { opacity:0; transform:translateY(-10px); }
+      }
+
+      .bolt {
+        animation: flash 6s infinite;
+      }
+
+      @keyframes flash {
+        0%,88%,100% { opacity:0; }
+        90% { opacity:1; }
+        92% { opacity:.1; }
+        94% { opacity:.9; }
+        97% { opacity:0; }
+      }
+
+      .rain {
+        animation: rain 1.1s linear infinite;
+      }
+
+      @keyframes rain {
+        from { transform:translate(0,-40px); }
+        to { transform:translate(-18px,380px); }
+      }
+
+      .float {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,100% { transform:translateY(0); }
+        50% { transform:translateY(-8px); }
+      }
+
+      .spin {
+        transform-origin:690px 170px;
+        animation: spin 18s linear infinite;
+      }
+
+      @keyframes spin {
+        to { transform:rotate(360deg); }
+      }
+
+      .scan {
+        animation: scan 4s linear infinite;
+      }
+
+      @keyframes scan {
+        0% { transform:translateY(0); opacity:0; }
+        10% { opacity:.65; }
+        90% { opacity:.65; }
+        100% { transform:translateY(300px); opacity:0; }
+      }
+
+      .wave {
+        animation: wave 5s ease-in-out infinite;
+      }
+
+      @keyframes wave {
+        0%,100% { transform:translateY(0); }
+        50% { transform:translateY(-5px); }
+      }
+
+      .blink {
+        animation: blink 1s steps(2) infinite;
+      }
+
+      @keyframes blink {
+        50% { opacity:0; }
+      }
+
+      .dash {
+        animation: dash 12s linear infinite;
+      }
+
+      @keyframes dash {
+        to { stroke-dashoffset:-200; }
+      }
+
+      .sail {
+        animation: sail 5s ease-in-out infinite;
+      }
+
+      @keyframes sail {
+        0%,100% { transform:translateX(0); }
+        50% { transform:translateX(-5px); }
+      }
     </style>
   </defs>
 
   <g clip-path="url(#h-clip)">
-    <rect width="900" height="340" fill="#0a0d18"/>
+
+    <!-- Background -->
+    <rect width="900" height="340" fill="#080b14"/>
     <rect width="900" height="340" fill="url(#h-dots)"/>
-    <!-- storm clouds -->
+    <rect width="900" height="340" fill="url(#scanlines)"/>
+
+    <!-- Ocean glow -->
+    <ellipse cx="750" cy="300" rx="420" ry="180" fill="url(#ocean-glow)"/>
+
+    <!-- Storm clouds -->
     <ellipse cx="760" cy="10" rx="260" ry="70" fill="#1b2140" opacity=".9"/>
     <ellipse cx="600" cy="0" rx="200" ry="55" fill="#141a33"/>
-    <!-- rain -->
-    <g stroke="#7dd3fc" stroke-width="1" opacity=".35">
-      <line class="rain" x1="520" y1="0" x2="514" y2="14" style="animation-delay:0s"/>
+    <ellipse cx="870" cy="55" rx="180" ry="60" fill="#12182c" opacity=".85"/>
+
+    <!-- Ocean waves -->
+    <g stroke="#164e63" fill="none" stroke-width="1.4" opacity=".45" class="wave">
+      <path d="M480 245 Q530 225 580 245 T680 245 T780 245 T880 245"/>
+      <path d="M500 265 Q550 245 600 265 T700 265 T800 265 T900 265"/>
+      <path d="M480 285 Q530 265 580 285 T680 285 T780 285 T880 285"/>
+    </g>
+
+    <!-- Rain -->
+    <g stroke="#7dd3fc" stroke-width="1" opacity=".3">
+      <line class="rain" x1="520" y1="0" x2="514" y2="14"/>
       <line class="rain" x1="580" y1="0" x2="574" y2="14" style="animation-delay:.3s"/>
       <line class="rain" x1="640" y1="0" x2="634" y2="14" style="animation-delay:.7s"/>
       <line class="rain" x1="700" y1="0" x2="694" y2="14" style="animation-delay:.15s"/>
       <line class="rain" x1="760" y1="0" x2="754" y2="14" style="animation-delay:.55s"/>
       <line class="rain" x1="820" y1="0" x2="814" y2="14" style="animation-delay:.9s"/>
       <line class="rain" x1="870" y1="0" x2="864" y2="14" style="animation-delay:.4s"/>
+      <line class="rain" x1="550" y1="0" x2="544" y2="14" style="animation-delay:.8s"/>
+      <line class="rain" x1="730" y1="0" x2="724" y2="14" style="animation-delay:.2s"/>
     </g>
-    <!-- lightning -->
+
+    <!-- Lightning -->
     <g class="bolt">
-      <polygon points="640,20 616,110 646,110 622,200 690,92 658,92 676,20" fill="#fde68a"/>
+      <polygon points="640,20 616,110 646,110 622,200 690,92 658,92 676,20"
+               fill="#fde68a"/>
       <rect width="900" height="340" fill="#93c5fd" opacity=".08"/>
     </g>
 
-    <!-- viewfinder -->
+    <!-- Cyber scan beam -->
+    <rect class="scan" x="470" y="40" width="400" height="2"
+          fill="#38bdf8" opacity=".35"/>
+
+    <!-- Viewfinder corners -->
     <g fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round">
       <path class="brk" d="M470 40 H500 M470 40 V70" style="animation-delay:.2s"/>
       <path class="brk" d="M870 40 H840 M870 40 V70" style="animation-delay:.4s"/>
       <path class="brk" d="M470 300 H500 M470 300 V270" style="animation-delay:.6s"/>
       <path class="brk" d="M870 300 H840 M870 300 V270" style="animation-delay:.8s"/>
     </g>
-    <circle cx="486" cy="56" r="5" fill="#ef4444" class="pulse" style="transform-box:fill-box;transform-origin:center"/>
-    <text x="498" y="60" font-size="11" fill="#94a3b8">REC · storm_cam_01.mp4</text>
 
-    <!-- hero emblem: original winged lightning crest + spinning hammer-like mace -->
+    <!-- Recording indicator -->
+    <circle cx="486" cy="56" r="5" fill="#ef4444" class="pulse"
+            style="transform-box:fill-box;transform-origin:center"/>
+    <text x="498" y="60" font-size="11" fill="#94a3b8">
+      REC · grandline_security.log
+    </text>
+
+    <!-- Pirate emblem background -->
     <circle cx="690" cy="170" r="110" fill="url(#h-glow)"/>
+
+    <!-- Rotating pirate ring -->
     <g class="float">
-      <g class="hammer">
-        <rect x="664" y="150" width="52" height="34" rx="6" fill="#64748b"/>
-        <rect x="684" y="184" width="12" height="62" rx="4" fill="#92400e"/>
-        <polygon points="690,150 700,150 686,172 694,172 680,196 692,168 684,168" fill="#fde68a"/>
+      <circle cx="690" cy="170" r="88"
+              fill="none" stroke="#fbbf24" stroke-opacity=".25"
+              stroke-width="1.5" stroke-dasharray="3 9"/>
+
+      <g class="spin" fill="none" stroke="#38bdf8" opacity=".55">
+        <circle cx="690" cy="170" r="96" stroke-width="1" stroke-dasharray="12 7"/>
+        <path d="M690 66 L700 76 L690 86 L680 76 Z" fill="#38bdf8"/>
+        <path d="M690 254 L700 264 L690 274 L680 264 Z" fill="#fbbf24"/>
       </g>
-      <circle cx="690" cy="170" r="84" fill="none" stroke="url(#h-grad)" stroke-width="1.5" stroke-dasharray="4 8"/>
     </g>
-    <!-- footer scrubber -->
+
+    <!-- Original pirate cyber crest -->
+    <g class="float">
+
+      <!-- Crossed bones -->
+      <g stroke="#cbd5e1" stroke-width="13" stroke-linecap="round" opacity=".9">
+        <path d="M650 190 L730 230"/>
+        <path d="M730 190 L650 230"/>
+      </g>
+
+      <!-- Bone ends -->
+      <g fill="#cbd5e1">
+        <circle cx="646" cy="186" r="8"/>
+        <circle cx="654" cy="194" r="8"/>
+        <circle cx="734" cy="226" r="8"/>
+        <circle cx="726" cy="234" r="8"/>
+
+        <circle cx="734" cy="186" r="8"/>
+        <circle cx="726" cy="194" r="8"/>
+        <circle cx="646" cy="226" r="8"/>
+        <circle cx="654" cy="234" r="8"/>
+      </g>
+
+      <!-- Skull -->
+      <g>
+        <path d="M690 105
+                 C650 105 630 134 635 165
+                 C638 184 649 195 660 202
+                 L660 217
+                 Q660 224 670 224
+                 L710 224
+                 Q720 224 720 217
+                 L720 202
+                 C731 195 742 184 745 165
+                 C750 134 730 105 690 105 Z"
+              fill="#e2e8f0" stroke="#fbbf24" stroke-width="2"/>
+
+        <!-- Eye sockets -->
+        <path d="M650 158 Q660 140 675 157 L669 176 Q656 180 650 158Z"
+              fill="#0a0d18"/>
+        <path d="M705 157 Q720 140 730 158 L721 176 Q708 180 705 157Z"
+              fill="#0a0d18"/>
+
+        <!-- Nose -->
+        <path d="M690 169 L684 185 L696 185 Z" fill="#0a0d18"/>
+
+        <!-- Teeth -->
+        <path d="M670 197 H710 V212 H670 Z" fill="#0a0d18"/>
+        <path d="M678 197 V212 M686 197 V212 M694 197 V212 M702 197 V212"
+              stroke="#cbd5e1" stroke-width="1.5"/>
+      </g>
+
+      <!-- Straw hat -->
+      <g>
+        <ellipse cx="690" cy="117" rx="59" ry="17"
+                 fill="#d97706" stroke="#fbbf24" stroke-width="2"/>
+        <path d="M649 113 Q660 72 690 75 Q720 72 731 113"
+              fill="#facc15" stroke="#fbbf24" stroke-width="2"/>
+        <path d="M642 116 Q690 128 738 116"
+              fill="none" stroke="#991b1b" stroke-width="7"/>
+      </g>
+
+      <!-- Cyber shield details -->
+      <path d="M690 88 L755 112 L748 174
+               Q738 212 690 240
+               Q642 212 632 174
+               L625 112 Z"
+            fill="none" stroke="#38bdf8" stroke-width="1.5"
+            opacity=".4" stroke-dasharray="4 5"/>
+
+      <!-- Center security lock -->
+      <g transform="translate(690 170)">
+        <rect x="-12" y="-3" width="24" height="20" rx="4"
+              fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+        <path d="M-8 -3 V-11 A8 8 0 0 1 8 -11 V-3"
+              fill="none" stroke="#38bdf8" stroke-width="3"/>
+        <circle cx="0" cy="6" r="3" fill="#fbbf24"/>
+        <path d="M0 8 V12" stroke="#fbbf24" stroke-width="2"/>
+      </g>
+    </g>
+
+    <!-- Footer progress scrubber -->
     <rect x="480" y="288" width="380" height="4" rx="2" fill="#1e293b"/>
     <rect x="480" y="288" width="0" height="4" rx="2" fill="url(#h-grad)">
-      <animate attributeName="width" values="0;380;380;0" keyTimes="0;.8;.95;1" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="width"
+               values="0;380;380;0"
+               keyTimes="0;.8;.95;1"
+               dur="5s"
+               repeatCount="indefinite"/>
     </rect>
 
-    <!-- left text -->
+    <!-- Left text -->
     <g class="fade" style="animation-delay:.1s">
-      <rect x="40" y="36" width="190" height="26" rx="13" fill="#0f172a" stroke="#38bdf8" stroke-opacity=".5"/>
-      <circle cx="58" cy="49" r="4" fill="#22c55e" class="pulse" style="transform-box:fill-box;transform-origin:center"/>
-      <text x="72" y="53" font-size="11" fill="#cbd5e1">open to collabs</text>
+      <rect x="40" y="36" width="190" height="26" rx="13"
+            fill="#0f172a" stroke="#38bdf8" stroke-opacity=".5"/>
+      <circle cx="58" cy="49" r="4" fill="#22c55e" class="pulse"
+              style="transform-box:fill-box;transform-origin:center"/>
+      <text x="72" y="53" font-size="11" fill="#cbd5e1">
+        open to collabs
+      </text>
     </g>
-    <text class="fade" style="animation-delay:.4s" x="40" y="108" font-size="16" fill="#94a3b8">Hi there, I'm</text>
-    <text class="disp fade" style="animation-delay:.7s" x="40" y="165" font-size="54" fill="url(#h-grad)">Aadith T K</text>
-    <g class="roles" font-size="20" fill="#e2e8f0">
-      <text class="r1" x="40" y="205">⚡ Entry-Level AI &amp; ML Engineer</text>
+
+    <text class="fade" style="animation-delay:.4s"
+          x="40" y="108" font-size="16" fill="#94a3b8">
+      Ahoy! I'm
+    </text>
+
+    <text class="disp fade" style="animation-delay:.7s"
+          x="40" y="165" font-size="54" fill="url(#h-grad)">
+      Aadith T K
+    </text>
+
+    <!-- Rotating roles -->
+    <g class="roles" font-size="19" fill="#e2e8f0">
+      <text class="r1" x="40" y="205">🎓 BCA Graduate · AI &amp; ML</text>
       <text class="r2" x="40" y="205">🛡 Aspiring Cybersecurity Analyst</text>
-      <text class="r3" x="40" y="205">🌩 BCA Graduate · Always Learning</text>
+      <text class="r3" x="40" y="205">⚡ AI/ML Engineer · Security Enthusiast</text>
     </g>
-    <text class="fade" style="animation-delay:1.2s" x="40" y="240" font-size="12.5" fill="#94a3b8">I build smart models and learn to defend systems. Open to junior roles.</text>
-    <g class="fade" style="animation-delay:1.5s" font-size="12" fill="#cbd5e1">
-      <text x="40" y="288">📍 [CITY]</text>
-      <text x="170" y="288">🎓 BCA · Bangalore University</text>
+
+    <text class="fade" style="animation-delay:1.2s"
+          x="40" y="240" font-size="12.5" fill="#94a3b8">
+      Building smart systems. Securing digital seas. Exploring the Grand Line.
+    </text>
+
+    <!-- Bottom info -->
+    <g class="fade" style="animation-delay:1.5s"
+       font-size="12" fill="#cbd5e1">
+      <text x="40" y="288">📍 Kerala, India</text>
+      <text x="190" y="288">🎓 BCA · AI &amp; ML</text>
     </g>
+
+    <!-- Cyber terminal decorations -->
+    <g fill="#38bdf8" font-size="9" opacity=".55">
+      <text x="790" y="320">SYS.ONLINE</text>
+      <text x="480" y="80">[ SCANNING ]</text>
+      <text x="480" y="270">ENCRYPTION ACTIVE</text>
+    </g>
+
+    <circle cx="785" cy="316" r="3" fill="#22c55e" class="blink"/>
+
   </g>
-  <rect x=".75" y=".75" width="898.5" height="338.5" rx="21.5" fill="none" stroke="url(#h-border)" stroke-width="1.5"/>
+
+  <!-- Border -->
+  <rect x=".75" y=".75" width="898.5" height="338.5" rx="21.5"
+        fill="none" stroke="url(#h-border)" stroke-width="1.5"/>
 </svg>
